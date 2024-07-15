@@ -20,6 +20,7 @@ export const HeroCard = ({
 }) => {
 
     const heroImageUrl = `/assets/heroes/${ id }.jpg`
+    const publisherMarvel = publisher === 'Marvel Comics'
     
     return (
         <div className='col animate__animated animate__fadeIn'>
@@ -27,12 +28,12 @@ export const HeroCard = ({
                 <div className='row no-gutters'>
                     <div className='col-4'>
                         <img src={ heroImageUrl } className='card-img' alt={ superhero } />
-
                     </div>
                     <div className='col-8'>
                         <div className='card-body'>
                             <h5 className='card-title'>{ superhero }</h5>
                             <p className='card-name'>{ alter_ego }</p>
+                            <p style={{ color: publisherMarvel ? 'red' : 'orange'}}>{ publisher } </p>
                             {/* {
                                 ( alter_ego !== characters ) && ( <p>{ characters }</p> )
                             } */}
@@ -42,14 +43,9 @@ export const HeroCard = ({
                             </p>
                             <Link to={ `/hero/${ id }`}>Más información</Link>
                         </div>
-                         
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
     )
 }
