@@ -1,10 +1,13 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { getHeroById } from '../helpers'
+import { useMemo } from "react"
 
 export const HeroPage = () => {
     const navigate = useNavigate()
     const { id } = useParams()
-    const hero = getHeroById( id )
+    // const hero = getHeroById( id )
+    //Each time when his dependencies changed, throw the callback
+    const hero = useMemo( () => getHeroById( id ), [ id ])
     const onNavigateBack = () => {
         /*naviagte*/
         // navigate('/marvel')
